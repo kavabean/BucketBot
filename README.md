@@ -1,0 +1,2 @@
+# BucketBot
+Discord Bucket Bot
