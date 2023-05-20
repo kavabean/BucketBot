@@ -5,7 +5,7 @@ def get_response(message: str) -> str:
 
     p_message = message.lower()
 
-    if p_message == 'hello':
-        return 'hello'
+    if 'hanni' in p_message:
+        return 'mid lmao'
 
-    return 'Not working!!'
+    return
