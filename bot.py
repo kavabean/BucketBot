@@ -5,6 +5,15 @@ from ignored import ignoredAPI
 import os
 
 
+class Buttons(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+
+    @discord.ui.button(label='what')
+    async def test(self, interaction: discord.Interaction, Button: discord.ui.Button):
+        await interaction.response.send_message(content='Chicken Butt')
+
+
 async def send_message(message, user_message, username, is_private=False):
 
     try:
@@ -31,7 +40,7 @@ def run_discord_bot():
         print(f'{client.user} is working.')
 
     @client.tree.command(name='gpt', description='this is for fun')
-    async def nofweakingway(interaction: discord.Interaction):
+    async def gpt(interaction: discord.Interaction):
         await interaction.response.send_message('Hello')
 
     @client.event
@@ -51,5 +60,9 @@ def run_discord_bot():
 
         if user_message:
             await send_message(message, user_message, username, is_private=False)
+
+    @client.tree.command(name='tester', description='button test')
+    async def what(interaction: discord.Interaction):
+        await interaction.response.send_message(content='Working Button', view=Buttons())
 
     client.run(TOKEN)
